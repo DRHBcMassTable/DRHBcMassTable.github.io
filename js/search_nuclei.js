@@ -209,7 +209,6 @@ function noyau(){
 function LIENmap(Z,N,test1){
    var m="./index.html";
    var m1="./index.html";
-   scrollCursor = getScrollCursor(e);
    if ((!(isNaN(N))) && (!(isNaN(Z)))) { 
      var Z=parseFloat(Z);
      var N=parseFloat(N);
