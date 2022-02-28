@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./pictures/masstable.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/justified-nav.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!--mathjax-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+
+    <title>
+      DRHBc Mass Table
+    </title>
+
+    <script src="./js/search_nuclei.js"></script>
+
+    <script src="./js/define.js"></script>
+
+    <link href="./css/define.css" rel="stylesheet">
+  
+  
+    
+
+  </head>
+
+  <body onload="clientProperty()">
+
+    <div class="header">
+      <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+    </div>
+
+
+    <div class="container nav_top">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav>
+            <ul class="nav nav-justified">
+              <li ><a href="./index.html">Nuclear Data</a></li>
+              <li class="active"><a href="./theory.html">DRHBc Theory</a></li>
+              <li ><a href="./collaboration.html">DRHBc Mass Table Collaboration</a></li>
+              <li ><a href="./publication.html">Publication</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row row_top">
+        <div class="col-lg-8 col-lg-push-2">
+          <h1>Introduction</h1>
+          <p class="pfont">
+            The study of exotic nuclei far from the β stability line is stimulated by the development of radioactive ion beam facilities worldwide and brings opportunities and challenges to existing nuclear theories. Including self-consistently the nuclear superfluidity, deformation, and continuum effects, the deformed relativistic Hartree-Bogoliubov theory in continuum (DRHBc) has turned out to be successful in describing both stable and exotic nuclei. Due to several challenges, however, the DRHBc theory has only been applied to study light nuclei so far.
+          </p>
+
+          <h1>Theoretical framework</h1>
+          <p class="pfont">
+            The details of the DRHBc theory with meson-exchange and point-coupling density functionals can be found in Refs. <a href="https://doi.org/10.1103/PhysRevC.85.024312">L. Li(2012)</a> and <a href="https://doi.org/10.1103/PhysRevC.102.024314">K. Zhang(2020)</a>, respectively. In the following we introduce its theoretical framework briefly.
+          </p>
+          <p class="pfont">
+            Starting from the Lagrangian density for point-coupling functionals, the energy density functional of the nuclear system can be constructed under the mean-field and no-sea approximations. By minimizing the energy density functional with respect to the densities, one obtains the Dirac equation for nucleons within the relativistic mean-field framework <a href="https://doi.org/10.1142/9872">J. Meng(2016)</a>. Treating self-consistently the mean field and pairing correlations, the RHB equations for the nucleons read <a href="https://link.springer.com/content/pdf/10.1007/BF01282930.pdf">H. Kucharek (1991)</a>
+            \[
+               \begin{pmatrix}
+               h_{D} - \lambda_{\tau} & \Delta \\
+               -\Delta^{*} & -h_{D}^{*} + \lambda_{\tau}
+               \end{pmatrix}
+               \begin{pmatrix}
+                U_{k} \\
+                V_{k}
+               \end{pmatrix}=E_{k}
+               \begin{pmatrix}
+                U_{k} \\
+                V_{k}
+               \end{pmatrix}.
+            \]
+            In the DRHBc theory, they are solved in a Dirac Woods-Saxon basis <a href="https://doi.org/10.1103/PhysRevC.68.034323">S.-G. Zhou(2003)</a>, which can describe the large spatial extension of halo nuclei near the drip line. In Eq. (1), \(\lambda_{\tau}\) is the Fermi energy (\(\tau=n/p\) for neutrons or protons), \(E_{k}\) and \((U_{k},V_{k})^{\mathrm{T}}\) the quasiparticle energy and wave function, and \(h_{D}\) the Dirac Hamiltonian,
+            \[
+               h_{D}(\vec{r})= \vec{\alpha}\cdot\vec{p} + V(\vec{r}) + \beta[M+S(\vec{r})],
+            \]
+            with the scalar \(S(\vec{r})\) and vector \(V(\vec{r})\) potentials. The pairing potential \(\Delta\) reads
+            \[
+              \Delta(\vec{r}_{1},\vec{r}_{2}) = V^{\mathrm{pp}}(\vec{r}_{1},\vec{r}_{2})\kappa(\vec{r}_{1},\vec{r}_{2}),
+            \]
+            with a density-dependent force of zero range,
+            \[
+              V^{\mathrm{pp}}(\vec{r}_{1},\vec{r}_{2}) = V_{0}\frac{1}{2}(1-P^{\sigma})\delta(\vec{r}_{1}-\vec{r}_{2})\left(1-\frac{\rho(\vec{r}_{1})}{\rho_{\mathrm{sat}}}\right)
+            \]
+            and the pairing tensor \(\kappa\) <a href="">P. Ring(1980)</a>.
+          </p>
+          <p class="pfont">
+            For axially deformed nuclei with spatial reflection symmetry, the potentials and densities are expanded in terms of the Legendre polynomials,
+            \[
+              f(\vec{r}) = \sum_{\lambda} f_{\lambda}(r)P_{\lambda}(\cos \theta),\quad \lambda = 0, 2, 4, \cdots,
+            \]
+            where \(\lambda\) is restricted to be even numbers.
+          </p>
+
+          <h1>Numerical details</h1>
+          <p class="pfont">Wait for update</p>
+        </div>
+      </div>
+
+
+    </div>
+    
+
+    <div class="container_fulid footer">
+      <div class="row text-center">
+        Copyright © 2022 by DRHBc Mass Table Collaboration
+      </div>
+    </div>
+    
+
+</body>
+
+</html>
