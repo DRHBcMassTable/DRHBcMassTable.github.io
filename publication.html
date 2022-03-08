@@ -23,6 +23,14 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./js/ie-emulation-modes-warning.js"></script>
 
+    <!-- jQuery -->
+    <script src="./js/jQuery.js"></script>
+    
+    <!-- Bootstrap Javascript -->
+    <script src="./js/bootstrap.js"></script>
+
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,22 +49,42 @@
       DRHBc Mass Table
     </title>
 
+    <!--must before the "search_nulcei.js" file, for it has been used in the latter js file-->
+    <script type="text/javascript" src="./nuclear_data/GS_plot.json"></script>
+    <!--<script type="module"> import * as raw from './nuclear_data/GS_plot.json' </script>-->
+
     <script src="./js/search_nuclei.js"></script>
 
-    <script src="./js/define.js"></script>
+    <!--<script src="./js/define.js"></script>-->
 
     <link href="./css/define.css" rel="stylesheet">
-  
-  
-    
+
 
   </head>
 
   <body onload="clientProperty()">
 
-    <div class="header">
-      <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-8 col-lg-push-2">
+          <br><br>
+          <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+          <p class="header_p">
+            by DRHBc Mass Table Collaboration<br>
+            (Last updated: 2022-03-08)<br>
+            Data reference: <a href="https://doi.org/10.1016/j.adt.2022.101488" style="color: chartreuse;">K. Zhang, et al.(DRHBc Mass Table Collaboration), Nuclear mass table in deformed relativistic<br> Hartree–Bogoliubov theory in continuum, I: Even–even nuclei, At. Data Nucl. Data Tables 144, 101488 (2022).</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1" style="position: relative; top: -50px; left: 1480px;">
+          <a class="btn btn-default btn-sm" href="https://ars.els-cdn.com/content/image/1-s2.0-S0092640X22000018-mmc1.txt">Download data</a>
+        </div>
+      </div>
     </div>
+    
+    
 
 
     <div class="container nav_top">
@@ -74,20 +102,59 @@
       </div>
     </div>
 
+
     <div class="container">
 
-      <div class="row row_top">
+      <div class="row">
         <div class="col-lg-8 col-lg-push-2">
-          <h1>Publication List</h1>
-          <p class="pfont">
-            <ul class="pfont">
-              <li>In EJ, Kim Y, Papakonstantinou P, Hong SW, <a href="https://doi.org/10.1142/S0218301321500099">International Journal of Modern Physics E, 2150009 (2021)</a></li>
-              <li>Sun XX, Zhao J, Zhou SG, <a href="https://doi.org/10.1016/j.nuclphysa.2020.122011">Nucl. Phys. A, 1003, 122011 (2020)</a> </li>
-              <li>Zhang KY, Cheoun MK, Choi YB, Chong PS, Dong JM, Geng LS, Ha EJ, He XT, Heo C, Ho MC, In EJ, Kim S, Kim Y, Lee CH, Lee J, Li JP, Luo TP, Meng J, Mun, MH, Niu ZM, Pan C, Papakonstantinou P, Shang XL, Shen CW, Shen GF, Sun W, Sun XX, Tam CK, Thaivayongnou, Wang C, Wong SH, Xia XW, Yan YJ, Yeung RWY, Yiu TC, Zhang SQ, Zhang W, Zhou SG, <a href="https://doi.org/10.1103/PhysRevC.102.024314">Phys. Rev. C 102, 024314 (2020)</a></li>
-              <li>Pan C, Zhang KY, Zhang SQ, <a href="https://doi.org/10.1142/S0218301319500824">Int. J. Mod. Phys. E 28, 1950082 (2019)</a></li>
-              <li>......</li>
-            </ul>
-          </p>
+          <h1>Publication List (to be updated)</h1>
+
+
+          <h2>2022</h2>
+          <ul class="pfont">
+            <li>W. Sun, K.-Y. Zhang, C. Pan, X.-H. Fan, S. Zhang, and Z.-P. Li, Beyond-mean-field dynamical correlations for nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum, <a href="https://doi.org/10.1088/1674-1137/ac53fa">Chin. Phys. C (2022 accepted)</a></li>
+            <li>K. Zhang, M.-K. Cheoun, Y.-B. Choi, P. S. Chong, J. Dong, Z. Dong, X. Du, L. Geng, E. Ha, X.-T. He, C. Heo, M. C. Ho, E. J. In, S. Kim, Y. Kim, C.-H. Lee, J. Lee, H. Li, Z. Li, T. Luo, J. Meng, M.-H. Mun, Z. Niu, C. Pan, P. Papakonstantinou, X. Shang, C. Shen, G. Shen, W. Sun, X.-X. Sun, C. Tam, Thaivayongnou, C. Wang, X. Wang, S. H. Wong, J. Wu, X. Wu, X. Xia, Y. Yan, R. W.-Y. Yeung, T. C. Yiu, S. Zhang, W. Zhang, X. Zhang, Q. Zhao, S.-G. Zhou, Nuclear mass table in deformed relativistic Hartree–Bogoliubov theory in continuum, I: Even–even nuclei, <a href="https://doi.org/10.1016/j.adt.2022.101488">At. Data Nucl. Data Tables 144, 101488 (2022).</a></li>
+            <li>Y.-B. Choi, C.-H. Lee, M.-H. Mun, and Y. Kim, Bubble nuclei with shape coexistence in even-even isotopes of Hf to Hg, <a href="https://doi.org/10.1103/PhysRevC.105.024306">Phys. Rev. C 105, 024306 (2022).</a></li>
+          </ul>
+
+
+          <h2>2021</h2>
+          <ul class="pfont">
+            <li>S. Kim, M.-H. Mun, M.-K. Cheoun, E. Ha, Shape coexistence and neutron skin thickness of Pb isotopes by the deformed relativistic Hartree-Bogoliubov theory in continuum, <a href="https://arxiv.org/abs/2112.06520">arXiv:2112.06520 (2021)</a></li>
+            <li>X.-T. He, C. Wang, K.-Y. Zhang, C.-W. Shen, Possible existence of bound nuclei beyond neutron drip lines driven by deformation, <a href="https://doi.org/10.1088/1674-1137/ac1b99">Chin. Phys. C 45 101001 (2021).</a></li>
+            <li>C. Pan, K.Y. Zhang, P.S. Chong, C. Heo, M.C. Ho, J. Lee, Z.P. Li, W. Sun, C.K. Tam, S.H. Wong, R.W.-Y. Yeung, T.C. Yiu, S.Q. Zhang, Possible bound nuclei beyond the two-neutron drip line in the \(50\leq Z\leq 70\) region, <a href="https://doi.org/10.1103/PhysRevC.104.024331">Phys. Rev. C 104 024331 (2021).</a></li>
+            <li>K. Zhang, X. He, J. Meng, C. Pan, C. Shen, C. Wang, S. Zhang, Predictive power for superheavy nuclear mass and possible stability beyond the neutron drip line in deformed relativistic Hartree-Bogoliubov theory in continuum, <a href="https://doi.org/10.1103/PhysRevC.104.L021301">Phys. Rev. C 104 L021301 (2021).</a></li>
+            <li>E.J. In, P. Papakonstantinou, Y. Kim, S.-W. Hong, Neutron drip line in the deformed relativistic Hartree–Bogoliubov theory in continuum: Oxygen to Calcium, <a href="https://doi.org/10.1142/S0218301321500099">Int. J. Mod. Phys. E 30 2150009 (2021).</a></li>
+            <li>K. Zhang, C. Pan, S. Zhang, J. Meng, Towards a high-precision nuclear mass table with deformed relativistic Hartree-Bogoliubov theory in continuum, <a href="https://doi.org/10.1360/TB-2020-1601">Chin. Sci. Bull. 66 3561 (2021).</a></li>
+          </ul>
+
+
+          <h2>2020</h2>
+          <ul class="pfont">
+            <li>E. J. In, Y. Kim, P. Papakonstantinou, and S.-W. Hong, Shape Coexistence in Isotopes from Oxygen to Calcium, <a href="https://doi.org/10.3938/jkps.77.966">J. Korean Phys. Soc. 77, 966–970 (2020)</a></li>
+            <li> K. Zhang, M.-K. Cheoun, Y.-B. Choi, P.S. Chong, J. Dong, L. Geng, E. Ha, X. He, C. Heo, M.C. Ho, E.J. In, S. Kim, Y. Kim, C.-H. Lee, J. Lee, Z. Li, T. Luo, J. Meng, M.-H. Mun, Z. Niu, C. Pan, P. Papakonstantinou, X. Shang, C. Shen, G. Shen, W. Sun, X.-X. Sun, C.K. Tam, Thaivayongnou, C. Wang, S.H. Wong, X. Xia, Y. Yan, R.W.-Y. Yeung, T.C. Yiu, S. Zhang, W. Zhang, S.-G. Zhou, DRHBc Mass Table Collaboration, Deformed relativistic Hartree-Bogoliubov theory in continuum with a point-coupling functional: Examples of even-even Nd isotopes, <a href="https://doi.org/10.1103/PhysRevC.102.024314">Phys. Rev. C 102 024314 (2020).</a></li>
+          </ul>
+
+
+          <h2>2019</h2>
+          <ul class="pfont">
+            <li>C. Pan, K. Zhang, S. Zhang, Multipole expansion of densities in the deformed relativistic Hartree–Bogoliubov theory in continuum, <a href="https://doi.org/10.1142/S0218301319500824">Int. J. Mod. Phys. E 28 1950082 (2019).</a></li>
+          </ul>
+
+          <!--
+          <h2>2018</h2>
+          <ul class="pfont">
+            <li></li>
+          </ul>
+
+          <h2>candidate list</h2>
+          <ul class="pfont">
+            <li>X.-X. Sun, S.-G. Zhou, <a href="https://doi.org/10.1016/j.scib.2021.07.005">Sci. Bull. 66 2072 (2021). 6 July</a></li>
+            <li>X.-X. Sun, S.-G. Zhou, <a href="https://doi.org/10.1103/PhysRevC.104.064319">Phys. Rev. C 104 064319 (2021). 22 Dec.</a></li>
+            <li>X.-X. Sun, J. Zhao, S.-G. Zhou, <a href="https://doi.org/10.1016/j.nuclphysa.2020.122011">Nuclear Phys. A 1003 122011 (2020). 14 Aug.</a></li>
+            <li>X.-X. Sun, <a href="https://doi.org/10.1103/PhysRevC.103.054315">Phys. Rev. C 103 054315 (2021). 20 May</a></li>
+          </ul>
+          -->
 
         </div>
       </div>
@@ -97,7 +164,7 @@
     
 
     <div class="container_fulid footer">
-      <div class="row text-center">
+      <div>
         Copyright © 2022 by DRHBc Mass Table Collaboration
       </div>
     </div>
