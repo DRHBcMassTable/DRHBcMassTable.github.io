@@ -23,6 +23,14 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./js/ie-emulation-modes-warning.js"></script>
 
+    <!-- jQuery -->
+    <script src="./js/jQuery.js"></script>
+    
+    <!-- Bootstrap Javascript -->
+    <script src="./js/bootstrap.js"></script>
+
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,22 +49,42 @@
       DRHBc Mass Table
     </title>
 
+    <!--must before the "search_nulcei.js" file, for it has been used in the latter js file-->
+    <script type="text/javascript" src="./nuclear_data/GS_plot.json"></script>
+    <!--<script type="module"> import * as raw from './nuclear_data/GS_plot.json' </script>-->
+
     <script src="./js/search_nuclei.js"></script>
 
-    <script src="./js/define.js"></script>
+    <!--<script src="./js/define.js"></script>-->
 
     <link href="./css/define.css" rel="stylesheet">
-  
-  
-    
+
 
   </head>
 
   <body onload="clientProperty()">
 
-    <div class="header">
-      <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-8 col-lg-push-2">
+          <br><br>
+          <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+          <p class="header_p">
+            by DRHBc Mass Table Collaboration<br>
+            (Last updated: 2022-03-08)<br>
+            Data reference: <a href="https://doi.org/10.1016/j.adt.2022.101488" style="color: chartreuse;">K. Zhang, et al.(DRHBc Mass Table Collaboration), Nuclear mass table in deformed relativistic<br> Hartree–Bogoliubov theory in continuum, I: Even–even nuclei, At. Data Nucl. Data Tables 144, 101488 (2022).</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1" style="position: relative; top: -50px; left: 1480px;">
+          <a class="btn btn-default btn-sm" href="https://ars.els-cdn.com/content/image/1-s2.0-S0092640X22000018-mmc1.txt">Download data</a>
+        </div>
+      </div>
     </div>
+    
+    
 
 
     <div class="container nav_top">
@@ -74,9 +102,10 @@
       </div>
     </div>
 
+
     <div class="container">
 
-      <div class="row row_top">
+      <div class="row">
         <div class="col-lg-8 col-lg-push-2">
 
           <h1>Introduction</h1>
