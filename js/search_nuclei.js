@@ -5,23 +5,56 @@ var noy= new Array("NEUTRON","HYDROGENE","HELIUM","LITHIUM","BERYLLIUM","BORE","
 var sym= new Array("N","H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Uub","Uut","Uuq","Uup","Uuh","Uus","Uuo","Uue","Ubn","Ubu","Ubb","Ubt","Ubq","Ubp","Ubh","Ubs","Ubo","Ube","Utn");
 
 var subfilename = 'potential';
+var graph_name = '_potential_n';
+var graph_format = '.png';
+
+function changeSym(Z,N){
+   document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
+   document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
+}
+
+
+
+function changeGraph(Z, N, subfilename, graph_name, graph_format){
+   if (Z<100) {var Z_dir="Z0"+Z;}
+   else {var Z_dir="Z"+Z;}
+   if (N<100) {var N_dir="N0"+N;}
+   else {var N_dir="N"+N;}
+   document.getElementById('detail').src = "./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+graph_name+graph_format;
+}
+
 
 function subfile(a,b){
    var Z1 = b.lastIndexOf("Z");
    var N1 = b.lastIndexOf("N");
    var D = b.lastIndexOf(".");
-   var Z = b.slice(Z1+1,N1);
-   var N = b.slice(N1+1,D);
-   var Z_dir="Z"+Z;
-   var N_dir="N"+N;
-   if (a==1){subfilename = 'potential';}
-   if (a==2){subfilename = 'density';}
-   if (a==3){subfilename = 'energy';}
-   if (a==4){subfilename = 'deformation';}
-   document.getElementById('detail').src="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
+   var Z = parseFloat(b.slice(Z1+1,N1));
+   var N = parseFloat(b.slice(N1+1,D));
+
+   if (a==1||a==2){
+      document.getElementById('graphs_caption_pot').style.display='inline';
+      document.getElementById('graphs_caption_den').style.display='none';
+   }
+   else if (a==3||a==4||a==5||a==6){
+      document.getElementById('graphs_caption_pot').style.display='none';
+      document.getElementById('graphs_caption_den').style.display='inline';
+   }
+   else {
+      document.getElementById('graphs_caption_pot').style.display='none';
+      document.getElementById('graphs_caption_den').style.display='none';
+   }
+
+   if (a==1){subfilename = 'potential'; graph_name = '_potential_n';}
+   if (a==2){subfilename = 'potential'; graph_name = '_potential_p';}
+   if (a==3){subfilename = 'density'; graph_name = '_density_n_line';}
+   if (a==4){subfilename = 'density'; graph_name = '_density_n_log';}
+   if (a==5){subfilename = 'density'; graph_name = '_density_p_line';}
+   if (a==6){subfilename = 'density'; graph_name = '_density_p_log';}
+   if (a==7){subfilename = 'pec'; graph_name = '_pec';}
+   changeGraph(Z, N, subfilename, graph_name, graph_format);
 }
 
-function ZNToData(Z,N){
+function ZN2DataTable(Z,N){
    var a = new Array(18);
    for(i=0; i<datatable.length; i++){
       if(Z==datatable[i].Z && N==datatable[i].N){
@@ -207,31 +240,24 @@ function noyau(){
 }
 
 function LIENmap(Z,N,test1){
+
    var m="./index.html";
-   var m1="./index.html";
    if ((!(isNaN(N))) && (!(isNaN(Z)))) { 
      var Z=parseFloat(Z);
      var N=parseFloat(N);
-     var Z_dir="Z"+Z;
-     var N_dir="N"+N;
      if (test1==-1) { 
-        var m="./nuclear_data/"+Z_dir+"/"+Z_dir+N_dir+".html";
-        var m1="./index.html#detail";
-        var m2="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-        document.getElementById('detail').src = m2;
-        document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-        document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-        ZNToData(Z,N);
+        var m="./index.html#detail";
+        changeGraph(Z, N, subfilename, graph_name, graph_format);
+        changeSym(Z,N);
+        ZN2DataTable(Z,N);
       }
    }
-   //return m;
-   return m1;
+   return m;
 }
 
 
 function LIEN(cZ,cN){
    var m="./index.html";
-   var m1="./index.html";
    var lim=new Array(120);
    for (var i=1;i<121;i++) {
       lim[i]=new Array(4);
@@ -347,27 +373,26 @@ function LIEN(cZ,cN){
    if (test1==-1) {
       var Z=parseFloat(cZ);
       var N=parseFloat(cN);
-      var Z_dir="Z"+Z;
-      var N_dir="N"+N;
-      var m="./nuclear_data/"+Z_dir+"/"+Z_dir+N_dir+".html";
-      var m1="./index.html#detail";
-      var m2="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-      document.getElementById('detail').src = m2;
-      document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-      document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-      ZNToData(Z,N);
+      var m="./index.html#detail";
+      changeGraph(Z, N, subfilename, graph_name, graph_format);
+      changeSym(Z,N);
+      ZN2DataTable(Z,N);
    }
-   //return m;
-   return m1;
+   return m;
 }
 
 
-function changeImg(a){
+function changeNuclearchart(a){
    if (a==2) {document.getElementById('image').src = "./pictures/MTGS_lscape_BErotdev_drip.png";}
-   else if (a==3) {document.getElementById('image').src = "./pictures/MTGS_lscape_diffQaErot.png";}
-   else if (a==4) {document.getElementById('image').src = "./pictures/MTGS_lscape_diffRch.png";}
-   else if (a==5) {document.getElementById('image').src = "./pictures/MTGS_lscape_S2n.png";}
-   else if (a==6) {document.getElementById('image').src = "./pictures/MTGS_lscape_S2p.png";}
+   else if (a==3) {document.getElementById('image').src = "./pictures/MTGS_lscape_S2n.png";}
+   else if (a==4) {document.getElementById('image').src = "./pictures/MTGS_lscape_S2p.png";}
+   else if (a==5) {document.getElementById('image').src = "./pictures/MTGS_lscape_d2n.png";}
+   else if (a==6) {document.getElementById('image').src = "./pictures/MTGS_lscape_d2p.png";}
+   else if (a==7) {document.getElementById('image').src = "./pictures/MTGS_lscape_diffRch.png";}
+   else if (a==8) {document.getElementById('image').src = "./pictures/MTGS_lscape_Epairn.png";}
+   else if (a==9) {document.getElementById('image').src = "./pictures/MTGS_lscape_Epairp.png";}
+   else if (a==10) {document.getElementById('image').src = "./pictures/MTGS_lscape_diffQaErot.png";}
+   else if (a==11) {document.getElementById('image').src = "./pictures/MTGS_lscape.png";}
    else {document.getElementById('image').src = "./pictures/MTGS_lscape_defor.png";}
 }
 
@@ -380,35 +405,28 @@ function changeZN(a,b) {
    var Z=parseFloat(Z);
    var N=parseFloat(N);
    if (b==1) {
-       Z=Z+2;
-       var Z_dir="Z"+Z; var N_dir="N"+N;
-       document.getElementById('detail').src="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-       document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       ZNToData(Z,N);
+      Z=Z+2;
+      changeGraph(Z, N, subfilename, graph_name, graph_format);
+      changeSym(Z,N);
+      ZN2DataTable(Z,N);
    }
-   else if (b==2) {N=N-2;
-       var Z_dir="Z"+Z;
-       var N_dir="N"+N;
-       document.getElementById('detail').src="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-       document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       ZNToData(Z,N);
+   else if (b==2) {
+      N=N-2;
+      changeGraph(Z, N, subfilename, graph_name, graph_format);
+      changeSym(Z,N);
+      ZN2DataTable(Z,N);
    }
    else if (b==3) {
-       N=N+2;
-       var Z_dir="Z"+Z; var N_dir="N"+N;
-       document.getElementById('detail').src="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-       document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       ZNToData(Z,N);
+      N=N+2;
+      changeGraph(Z, N, subfilename, graph_name, graph_format);
+      changeSym(Z,N);
+      ZN2DataTable(Z,N);
    }
-   else {Z=Z-2;
-       var Z_dir="Z"+Z;
-       var N_dir="N"+N; document.getElementById('detail').src="./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+".png";
-       document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-       ZNToData(Z,N);
+   else {
+      Z=Z-2;
+      changeGraph(Z, N, subfilename, graph_name, graph_format);
+      changeSym(Z,N);
+      ZN2DataTable(Z,N);
    }
 
 }
