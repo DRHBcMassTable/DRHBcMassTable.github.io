@@ -23,6 +23,14 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./js/ie-emulation-modes-warning.js"></script>
 
+    <!-- jQuery -->
+    <script src="./js/jQuery.js"></script>
+    
+    <!-- Bootstrap Javascript -->
+    <script src="./js/bootstrap.js"></script>
+
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,22 +49,42 @@
       DRHBc Mass Table
     </title>
 
+    <!--must before the "search_nulcei.js" file, for it has been used in the latter js file-->
+    <script type="text/javascript" src="./nuclear_data/GS_plot.json"></script>
+    <!--<script type="module"> import * as raw from './nuclear_data/GS_plot.json' </script>-->
+
     <script src="./js/search_nuclei.js"></script>
 
-    <script src="./js/define.js"></script>
+    <!--<script src="./js/define.js"></script>-->
 
     <link href="./css/define.css" rel="stylesheet">
-  
-  
-    
+
 
   </head>
 
   <body onload="clientProperty()">
 
-    <div class="header">
-      <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-8 col-lg-push-2">
+          <br><br>
+          <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+          <p class="header_p">
+            by DRHBc Mass Table Collaboration<br>
+            (Last updated: 2022-03-08)<br>
+            Data reference: <a href="https://doi.org/10.1016/j.adt.2022.101488" style="color: chartreuse;">K. Zhang, et al.(DRHBc Mass Table Collaboration), Nuclear mass table in deformed relativistic<br> Hartree–Bogoliubov theory in continuum, I: Even–even nuclei, At. Data Nucl. Data Tables 144, 101488 (2022).</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1" style="position: relative; top: -50px; left: 1480px;">
+          <a class="btn btn-default btn-sm" href="https://ars.els-cdn.com/content/image/1-s2.0-S0092640X22000018-mmc1.txt">Download data</a>
+        </div>
+      </div>
     </div>
+    
+    
 
 
     <div class="container nav_top">
@@ -74,68 +102,39 @@
       </div>
     </div>
 
+
     <div class="container">
 
       <div class="row row_top">
-        <div class="col-lg-8 col-lg-push-2">
-          <h1>Introduction</h1>
-          <p class="pfont">
-            The study of exotic nuclei far from the β stability line is stimulated by the development of radioactive ion beam facilities worldwide and brings opportunities and challenges to existing nuclear theories. Including self-consistently the nuclear superfluidity, deformation, and continuum effects, the deformed relativistic Hartree-Bogoliubov theory in continuum (DRHBc) has turned out to be successful in describing both stable and exotic nuclei. Due to several challenges, however, the DRHBc theory has only been applied to study light nuclei so far.
-          </p>
+          <div class="col-lg-8 col-lg-push-2">
+            <h1>Introduction</h1>
+            <p class="pfont">
+              The study of exotic nuclei far from the β stability line is stimulated by the development of radioactive ion beam facilities worldwide and brings opportunities and challenges to existing nuclear theories. Including self-consistently the nuclear superfluidity, deformation, and continuum effects, the deformed relativistic Hartree-Bogoliubov theory in continuum (DRHBc) has turned out to be successful in describing both stable and exotic nuclei.
+            </p>
 
-          <h1>Theoretical framework</h1>
-          <p class="pfont">
-            The details of the DRHBc theory with meson-exchange and point-coupling density functionals can be found in Refs. <a href="https://doi.org/10.1103/PhysRevC.85.024312">L. Li(2012)</a> and <a href="https://doi.org/10.1103/PhysRevC.102.024314">K. Zhang(2020)</a>, respectively. In the following we introduce its theoretical framework briefly.
-          </p>
-          <p class="pfont">
-            Starting from the Lagrangian density for point-coupling functionals, the energy density functional of the nuclear system can be constructed under the mean-field and no-sea approximations. By minimizing the energy density functional with respect to the densities, one obtains the Dirac equation for nucleons within the relativistic mean-field framework <a href="https://doi.org/10.1142/9872">J. Meng(2016)</a>. Treating self-consistently the mean field and pairing correlations, the RHB equations for the nucleons read <a href="https://link.springer.com/content/pdf/10.1007/BF01282930.pdf">H. Kucharek (1991)</a>
-            \[
-               \begin{pmatrix}
-               h_{D} - \lambda_{\tau} & \Delta \\
-               -\Delta^{*} & -h_{D}^{*} + \lambda_{\tau}
-               \end{pmatrix}
-               \begin{pmatrix}
-                U_{k} \\
-                V_{k}
-               \end{pmatrix}=E_{k}
-               \begin{pmatrix}
-                U_{k} \\
-                V_{k}
-               \end{pmatrix}.
-            \]
-            In the DRHBc theory, they are solved in a Dirac Woods-Saxon basis <a href="https://doi.org/10.1103/PhysRevC.68.034323">S.-G. Zhou(2003)</a>, which can describe the large spatial extension of halo nuclei near the drip line. In Eq. (1), \(\lambda_{\tau}\) is the Fermi energy (\(\tau=n/p\) for neutrons or protons), \(E_{k}\) and \((U_{k},V_{k})^{\mathrm{T}}\) the quasiparticle energy and wave function, and \(h_{D}\) the Dirac Hamiltonian,
-            \[
-               h_{D}(\vec{r})= \vec{\alpha}\cdot\vec{p} + V(\vec{r}) + \beta[M+S(\vec{r})],
-            \]
-            with the scalar \(S(\vec{r})\) and vector \(V(\vec{r})\) potentials. The pairing potential \(\Delta\) reads
-            \[
-              \Delta(\vec{r}_{1},\vec{r}_{2}) = V^{\mathrm{pp}}(\vec{r}_{1},\vec{r}_{2})\kappa(\vec{r}_{1},\vec{r}_{2}),
-            \]
-            with a density-dependent force of zero range,
-            \[
-              V^{\mathrm{pp}}(\vec{r}_{1},\vec{r}_{2}) = V_{0}\frac{1}{2}(1-P^{\sigma})\delta(\vec{r}_{1}-\vec{r}_{2})\left(1-\frac{\rho(\vec{r}_{1})}{\rho_{\mathrm{sat}}}\right)
-            \]
-            and the pairing tensor \(\kappa\) <a href="">P. Ring(1980)</a>.
-          </p>
-          <p class="pfont">
-            For axially deformed nuclei with spatial reflection symmetry, the potentials and densities are expanded in terms of the Legendre polynomials,
-            \[
-              f(\vec{r}) = \sum_{\lambda} f_{\lambda}(r)P_{\lambda}(\cos \theta),\quad \lambda = 0, 2, 4, \cdots,
-            \]
-            where \(\lambda\) is restricted to be even numbers.
-          </p>
+            <p class="pfont">
+              The first implement of the DRHBc theory was reported in<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://doi.org/10.1103/PhysRevC.82.011301">S.-G. Zhou, J. Meng, P. Ring, E.-G. Zhao, Neutron halo in deformed nuclei, Phys. Rev. C 82 011301(R) (2010).</a>
+            </p>
+            
+            <p class="pfont">
+              The detailed formulism of the DRHBc theory with meson-exchange and point-coupling density functionals can be found respectively in<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://doi.org/10.1103/PhysRevC.85.024312">L. Li, J. Meng, P. Ring, E.-G. Zhao, S.-G. Zhou, Deformed relativistic Hartree-Bogoliubov theory in continuum, Phys. Rev. C 85 024312 (2012).</a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://doi.org/10.1103/PhysRevC.102.024314">K. Zhang, et al.(DRHBc Mass Table Collaboration), Deformed relativistic Hartree-Bogoliubov theory in continuum with a point-coupling functional: Examples of even-even Nd isotopes, Phys. Rev. C 102 024314 (2020).</a>
+            </p>
 
-          <h1>Numerical details</h1>
-          <p class="pfont">Wait for update</p>
-        </div>
+            <p class="pfont">
+              The numerical details of even-even nuclei for the DRHBc mass table was given in<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://doi.org/10.1103/PhysRevC.102.024314">K. Zhang, et al.(DRHBc Mass Table Collaboration), Deformed relativistic Hartree-Bogoliubov theory in continuum with a point-coupling functional: Examples of even-even Nd isotopes, Phys. Rev. C 102 024314 (2020).</a>
+            </p>
+  
+          </div>
       </div>
-
-
     </div>
     
 
     <div class="container_fulid footer">
-      <div class="row text-center">
+      <div>
         Copyright © 2022 by DRHBc Mass Table Collaboration
       </div>
     </div>
