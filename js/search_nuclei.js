@@ -2,17 +2,12 @@
 datatable = JSON.parse(raw);
 
 var noy= new Array("NEUTRON","HYDROGENE","HELIUM","LITHIUM","BERYLLIUM","BORE","CARBONE","AZOTE","OXYGENE","FLUOR","NEON","SODIUM","MAGNESIUM","ALUMINIUM","SILICIUM","PHOSPHORE","SOUFRE","CHLORE","ARGON","POTASSIUM","CALCIUM","SCANDIUM","TITANE","VANADIUM","CHROME","MANGANESE","FER","COBALT","NICKEL","CUIVRE","ZINC","GALLIUM","GERMANIUM","ARSENIC","SELENIUM","BROME","KRYPTON","RUBIDIUM","STRONTIUM","YTRIUM","ZIRCONIUM","NIOBIUM","MOLYBDENE","TECHNETIUM","RUTHENIUM","RHODIUM","PALLADIUM","ARGENT","CADMIUM","INDIUM","ETAIN","ANTIMOINE","TELLURE","IODE","XENON","CESIUM","BARIUM","LANTHANE","CERIUM","PRASEODYME","NEODYME","PROMETHEUM","SAMARIUM","EUROPIUM","GADOLINIUM","TERBIUM","DYSPROSIUM","HOLMIUM","ERBIUM","THULIUM","YTERBIUM","LUTETIUM","HAFNIUM","TANTALE","TUNGSTENE","RHENIUM","OSMIUM","IRIDIUM","PLATINE","OR","MERCURE","THALLIUM","PLOMB","BISMUTH","POLONIUM","ASTATINE","RADON","FRANCIUM","RADIUM","ACTINIUM","THORIUM","PROTACTINIUM","URANIUM","NEPTUNIUM","PLUTONIUM","AMERICIUM","CURIUM","BERKELIUM","CALIFORNIUM","EINSTEINIUM","FERMIUM","MENDELEVIUM","NOBELIUM","LAWRENCIUM","RUTHERFORDIUM","DUBNIUM","SEABORGIUM","BOHRIUM","HASSIUM","MEITNERIUM","DARMSTADTIUM","ROENTGENIUM","UNUNBIUM","UNUNTRIUM","UNUNQUADIUM","UNUNPENTIUM","UNUNHEXIUM","UNUNSEPTIUM","UNUNOCTIUM","UNUNENNIUM","UNBINILIUM","UNBIUNIUM","UNBIBIUM","UNBITRIUM","UNBIQUADIUM","UNBIPENTIUM","UNBIHEXIUM","UNBISEPTIUM","UNBIOCTIUM","UNBIENNIUM","UNTRINILIUM");
-var sym= new Array("N","H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Uub","Uut","Uuq","Uup","Uuh","Uus","Uuo","Uue","Ubn","Ubu","Ubb","Ubt","Ubq","Ubp","Ubh","Ubs","Ubo","Ube","Utn");
+var sym= new Array("N","H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og","Uue","Ubn","Ubu","Ubb","Ubt","Ubq","Ubp","Ubh","Ubs","Ubo","Ube","Utn");
 
 var subfilename = 'potential';
 var graph_name = '_potential_n';
 var graph_format = '.png';
-
-function changeSym(Z,N){
-   document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-   document.getElementById('title_detail_information1').innerHTML = 'Graphs of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
-}
-
+var graph_title = 'Neutron mean-field potential of: ';
 
 
 function changeGraph(Z, N, subfilename, graph_name, graph_format){
@@ -44,15 +39,57 @@ function subfile(a,b){
       document.getElementById('graphs_caption_den').style.display='none';
    }
 
-   if (a==1){subfilename = 'potential'; graph_name = '_potential_n';}
-   if (a==2){subfilename = 'potential'; graph_name = '_potential_p';}
-   if (a==3){subfilename = 'density'; graph_name = '_density_n_line';}
-   if (a==4){subfilename = 'density'; graph_name = '_density_n_log';}
-   if (a==5){subfilename = 'density'; graph_name = '_density_p_line';}
-   if (a==6){subfilename = 'density'; graph_name = '_density_p_log';}
-   if (a==7){subfilename = 'pec'; graph_name = '_pec';}
+   if (a==1){
+      subfilename = 'potential';
+      graph_name = '_potential_n';
+      graph_title = 'Neutron mean-field potential of: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==2){
+      subfilename = 'potential';
+      graph_name = '_potential_p';
+      graph_title = 'Proton mean-field potential of: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==3){
+      subfilename = 'density';
+      graph_name = '_density_n_line';
+      graph_title = 'Neutron density distribution: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==4){
+      subfilename = 'density';
+      graph_name = '_density_n_log';
+      graph_title = 'Neutron density distribution: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==5){
+      subfilename = 'density';
+      graph_name = '_density_p_line';
+      graph_title = 'Proton density distribution: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==6){
+      subfilename = 'density';
+      graph_name = '_density_p_log';
+      graph_title = 'Proton density distribution: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
+   if (a==7){
+      subfilename = 'pec';
+      graph_name = '_pec';
+      graph_title = 'Potential energy curve of: ';
+      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+   }
    changeGraph(Z, N, subfilename, graph_name, graph_format);
 }
+
+
+function changeSym(Z,N){
+   document.getElementById('title_detail_information').innerHTML = 'Ground-state properties of: '+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)];
+   document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
+}
+
 
 function ZN2DataTable(Z,N){
    var a = new Array(18);
