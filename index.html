@@ -60,16 +60,31 @@
     <link href="./css/define.css" rel="stylesheet">
 
 
-    
-    
   </head>
 
   <body onload="clientProperty()">
 
 
     <div class="container-fluid header">
-      <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+      <div class="row">
+        <div class="col-lg-8 col-lg-push-2">
+          <br><br>
+          <h1 class="header_h">Nuclear mass table in deformed relativistic Hartree-Bogoliubov theory in continuum</h1>
+          <p class="header_p">
+            by DRHBc Mass Table Collaboration<br>
+            (Last updated: 2022-03-08)<br>
+            Data reference: <a href="https://doi.org/10.1016/j.adt.2022.101488" style="color: chartreuse;">K. Zhang, et al.(DRHBc Mass Table Collaboration), Nuclear mass table in deformed relativistic<br> Hartree–Bogoliubov theory in continuum, I: Even–even nuclei, At. Data Nucl. Data Tables 144, 101488 (2022).</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1" style="position: relative; top: -50px; left: 1480px;">
+          <a class="btn btn-default btn-sm" href="https://ars.els-cdn.com/content/image/1-s2.0-S0092640X22000018-mmc1.txt">Download data</a>
+        </div>
+      </div>
     </div>
+    
+    
 
 
     <div class="container nav_top">
@@ -87,11 +102,12 @@
       </div>
     </div>
 
+
     <div class="container container_border">
 
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="title1">Nuclear chart</h1>
+          <h1 class="title1">Nuclear chart
         </div>
       </div>
 
@@ -99,22 +115,30 @@
         <div class="col-lg-12">
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(1)">Deformation\(\beta_{2}\)</button>
+              <button type="button" class="btn btn-primary" onclick="changeNuclearchart(1)">Quadrupole deformations \(\beta_{2}\)</button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(2)">\(\Delta E\)</button>
+              <button type="button" class="btn btn-primary" onclick="changeNuclearchart(2)">Binding energy differences \(\Delta E_{\mathrm{b}}\)</button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(3)">\(Q_{\alpha}\)</button>
+              <button type="button" class="btn btn-primary" onclick="changeNuclearchart(3)">Two-neutron separation energies \(S_{\mathrm{2n}}\)</button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(4)">\(R_{\mathrm{ch}}\)</button>
+              <button type="button" class="btn btn-primary" onclick="changeNuclearchart(4)">Two-proton separation energies \(S_{\mathrm{2p}}\)</button>
             </div>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(5)">\(S_{\mathrm{2n}}\)</button>
-            </div>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" onclick="changeImg(6)">\(S_{\mathrm{2p}}\)</button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Others <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu ">
+                <li><a onclick="changeNuclearchart(5)">Two-neutron gaps \(\delta_{\mathrm{2n}}\)</a></li>
+                <li><a onclick="changeNuclearchart(6)">Two-proton gaps \(\delta_{\mathrm{2p}}\)</a></li>
+                <li><a onclick="changeNuclearchart(7)">Charge radius differences \(\Delta R_{\mathrm{ch}}\)</a></li>
+                <li><a onclick="changeNuclearchart(8)">Neutron pairing energies \(E_{\mathrm{pair}}^{\mathrm{n}}\)</a></li>
+                <li><a onclick="changeNuclearchart(9)">Proton pairing energies \(E_{\mathrm{pair}}^{\mathrm{p}}\)</a></li>
+                <li><a onclick="changeNuclearchart(10)">\(\alpha\) decay energy differences \(\Delta Q_{\alpha}\)</a></li>
+                <li><a onclick="changeNuclearchart(11)">\(\cdots\)</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -181,19 +205,6 @@
           </table>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Download <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="./nuclear_data/DRHBc_Mass_Table.txt" download="DRHBc_Mass_table">txt</a></li>
-              <li><a href="./nuclear_data/DRHBc_Mass_Table.xlsx" download="DRHBc_Mass_table">excel</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
 
 
@@ -209,27 +220,43 @@
       <div class="row center-block">
 
         <div class="col-lg-12">
-          <table class="table-condensed">
+          <table class="table-condensed" id="graphs">
             <tr>
               <td>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="potential" checked onclick="subfile(1,document.getElementById('detail').src)">Potential
-                  </label><br>
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="density" onclick="subfile(2,document.getElementById('detail').src)">Density
-                  </label><br>
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="energy" onclick="subfile(3,document.getElementById('detail').src)">Potential energy curve
-                  </label><br>
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="deformation" disabled>Deformation
-                  </label><br>
+                <div class="btn-group-vertical" role="group" aria-label="...">
+                     
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Mean-field potential
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a onclick="subfile(1,document.getElementById('detail').src)">Neutron</a></li>
+                      <li><a onclick="subfile(2,document.getElementById('detail').src)">Proton</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Density distribution
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a onclick="subfile(3,document.getElementById('detail').src)">Neutron (line)</a></li>
+                      <li><a onclick="subfile(4,document.getElementById('detail').src)">Neutron (log)</a></li>
+                      <li><a onclick="subfile(5,document.getElementById('detail').src)">Proton (line)</a></li>
+                      <li><a onclick="subfile(6,document.getElementById('detail').src)">Proton (log)</a></li>
+                    </ul>
+                  </div>
+
+                  <button type="button" class="btn btn-default" onclick="subfile(7,document.getElementById('detail').src)">Potential energy curve</button> 
+                  <button type="button" class="btn btn-default">\(\cdots\)</button> 
                 </div>
+
               </td>
 
               <td>
-                <img id="detail" class="img-responsive center-block" src="./nuclear_data/Z64/potential/Z64N78.png" width="1000px">
+                <img id="detail" class="img-responsive center-block" src="./nuclear_data/Z060/potential/Z060N100_potential_n.png" width="1000px">
               </td>
 
               <td>
@@ -238,7 +265,7 @@
                     <td></td>
                     <td>
                       <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,1)">\(Z \uparrow\)</button>
+                        <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,1)">\(Z + 2\)</button>
                       </div>
                     </td>
                     <td></td>
@@ -246,24 +273,37 @@
                   <tr>
                     <td>
                       <div class="btn-group" role="group" aria-label="...">
-                        <button type="button N_button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,2)">\(N \leftarrow\)</button>
+                        <button type="button N_button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,2)">\(N - 2\)</button>
                       </div>
                     </td>
                     <td></td>
                     <td><div class="btn-group" role="group" aria-label="...">
-                      <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,3)">\(N \rightarrow\)</button>
+                      <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,3)">\(N + 2\)</button>
                     </div></td>
                   </tr>
                   <tr>
                     <td></td>
                     <td><div class="btn-group" role="group" aria-label="...">
-                      <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,4)">\(Z \downarrow\)</button>
+                      <button type="button" class="btn btn-success" onclick="changeZN(document.getElementById('detail').src,4)">\(Z - 2\)</button>
                     </div></td>
                     <td></td>
                   </tr>
                 </table>
 
               </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <p id="graphs_caption_pot" style="font-size: 20px">
+                  Note: Angle averaged mean-field potential (Angle averaged), mean-field potential along the symmetry axis \(z~(\theta=0^{\circ})\), and that perpendicular to the symmetry axis with \(r_{\perp}=\sqrt{x^{2}+y^{2}}~(\theta=90^{\circ})\) are presented. Here the angle averaged potential is equivalent to the spherical component of the Legendre expansion, i.e., \([V(r)+S(r)]_{\lambda=0}=\frac{1}{4\pi}\int[V(\boldsymbol{r})+S(\boldsymbol{r})]\mathrm{d}\Omega\).
+                </p>
+                <p id="graphs_caption_den" style="display: none; font-size: 20px">
+                  Note: Angle averaged density distribution (Angle averaged), density distribution along the symmetry axis \(z~(\theta=0^{\circ})\), and that perpendicular to the symmetry axis with \(r_{\perp}=\sqrt{x^{2}+y^{2}}~(\theta=90^{\circ})\) are presented. Here the angle averaged density is equivalent to the spherical component of the Legendre expansion, i.e., \(\rho_{0}(r)=\frac{1}{4\pi}\int\rho(\boldsymbol{r})\mathrm{d}\Omega\).
+                </p>
+              </td>
+              <td></td>
             </tr>
           </table>
         </div>
