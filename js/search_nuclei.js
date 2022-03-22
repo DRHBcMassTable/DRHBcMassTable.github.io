@@ -5,7 +5,7 @@ var noy= new Array("NEUTRON","HYDROGENE","HELIUM","LITHIUM","BERYLLIUM","BORE","
 var sym= new Array("N","H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og","Uue","Ubn","Ubu","Ubb","Ubt","Ubq","Ubp","Ubh","Ubs","Ubo","Ube","Utn");
 
 var subfilename = 'potential';
-var graph_name = '_potential_n';
+var graph_name = '_pot_n';
 var graph_format = '.png';
 var graph_title = 'Neutron mean-field potential of: ';
 
@@ -41,37 +41,37 @@ function subfile(a,b){
 
    if (a==1){
       subfilename = 'potential';
-      graph_name = '_potential_n';
+      graph_name = '_pot_n';
       graph_title = 'Neutron mean-field potential of: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==2){
       subfilename = 'potential';
-      graph_name = '_potential_p';
+      graph_name = '_pot_p';
       graph_title = 'Proton mean-field potential of: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==3){
       subfilename = 'density';
-      graph_name = '_density_n_line';
+      graph_name = '_den_n_line';
       graph_title = 'Neutron density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==4){
       subfilename = 'density';
-      graph_name = '_density_n_log';
+      graph_name = '_den_n_log';
       graph_title = 'Neutron density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==5){
       subfilename = 'density';
-      graph_name = '_density_p_line';
+      graph_name = '_den_p_line';
       graph_title = 'Proton density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==6){
       subfilename = 'density';
-      graph_name = '_density_p_log';
+      graph_name = '_den_p_log';
       graph_title = 'Proton density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
