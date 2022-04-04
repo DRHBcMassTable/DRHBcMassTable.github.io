@@ -9,6 +9,13 @@ var graph_name = '_pot_n';
 var graph_format = '.png';
 var graph_title = 'Neutron mean-field potential of: ';
 
+function UpdateTime(){
+   var update_time = "2022-04-02";
+   var x = document.getElementsByClassName("upti");
+   for(i=0;i<x.length;i++){
+      x[i].innerHTML = update_time;
+   }
+}
 
 function changeGraph(Z, N, subfilename, graph_name, graph_format){
    if (Z<100) {var Z_dir="Z0"+Z;}
