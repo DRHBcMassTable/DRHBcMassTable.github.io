@@ -60,7 +60,7 @@ function subfile(a,b){
    }
    if (a==3){
       subfilename = 'density';
-      graph_name = '_den_n_line';
+      graph_name = '_den_n_linear';
       graph_title = 'Neutron density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
@@ -72,7 +72,7 @@ function subfile(a,b){
    }
    if (a==5){
       subfilename = 'density';
-      graph_name = '_den_p_line';
+      graph_name = '_den_p_linear';
       graph_title = 'Proton density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
