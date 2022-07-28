@@ -10,7 +10,7 @@ var graph_format = '.png';
 var graph_title = 'Neutron mean-field potential of: ';
 
 function UpdateTime(){
-   var update_time = "2022-05-27";
+   var update_time = "2022-07-28";
    var x = document.getElementsByClassName("upti");
    for(i=0;i<x.length;i++){
       x[i].innerHTML = update_time;
@@ -37,7 +37,7 @@ function subfile(a,b){
       document.getElementById('graphs_caption_pot').style.display='inline';
       document.getElementById('graphs_caption_den').style.display='none';
    }
-   else if (a==3||a==4||a==5||a==6){
+   else if (a==3||a==4){
       document.getElementById('graphs_caption_pot').style.display='none';
       document.getElementById('graphs_caption_den').style.display='inline';
    }
@@ -60,29 +60,17 @@ function subfile(a,b){
    }
    if (a==3){
       subfilename = 'density';
-      graph_name = '_den_n_linear';
+      graph_name = '_den_n';
       graph_title = 'Neutron density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==4){
       subfilename = 'density';
-      graph_name = '_den_n_log';
-      graph_title = 'Neutron density distribution: ';
+      graph_name = '_den_p';
+      graph_title = 'Proton density distribution: ';
       document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
    }
    if (a==5){
-      subfilename = 'density';
-      graph_name = '_den_p_linear';
-      graph_title = 'Proton density distribution: ';
-      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
-   }
-   if (a==6){
-      subfilename = 'density';
-      graph_name = '_den_p_log';
-      graph_title = 'Proton density distribution: ';
-      document.getElementById('title_detail_information1').innerHTML = graph_title+'<sup>'+(Z+N)+'</sup>'+sym[parseInt(Z)]+' (Z='+Z+', '+'N='+N+')';
-   }
-   if (a==7){
       subfilename = 'pec';
       graph_name = '_pec';
       graph_title = 'Potential energy curve of: ';
