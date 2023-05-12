@@ -18,9 +18,11 @@ function UpdateTime(){
 }
 
 function changeGraph(Z, N, subfilename, graph_name, graph_format){
-   if (Z<100) {var Z_dir="Z0"+Z;}
+   if (Z<10) {var Z_dir="Z00"+Z;}
+   else if (Z>=10 && Z<100) {var Z_dir="Z0"+Z;}
    else {var Z_dir="Z"+Z;}
-   if (N<100) {var N_dir="N0"+N;}
+   if (N<10) {var N_dir="N00"+N;}
+   else if (N>=10 && N<100) {var N_dir="N0"+N;}
    else {var N_dir="N"+N;}
    document.getElementById('detail').src = "./nuclear_data/"+Z_dir+"/"+subfilename+"/"+Z_dir+N_dir+graph_name+graph_format;
 }
