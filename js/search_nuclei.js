@@ -10,7 +10,7 @@ var graph_format = '.png';
 var graph_title = 'Neutron mean-field potential of: ';
 
 function UpdateTime(){
-   var update_time = "2023-05-09";
+   var update_time = "2023-05-16";
    var x = document.getElementsByClassName("upti");
    for(i=0;i<x.length;i++){
       x[i].innerHTML = update_time;
