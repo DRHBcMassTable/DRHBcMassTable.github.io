@@ -1,0 +1,1 @@
+window.TRANSLATIONS = {"indico":{"":{"domain":"indico","lang":"en_GB","plural_forms":"nplurals=2; plural=(n != 1)"}},"payment_manual":{"":{"domain":"payment_manual","lang":"en_GB"}},"payment_paypal":{"":{"domain":"payment_paypal","lang":"en_GB"}}};
